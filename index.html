@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDS Darpan — SMART SAMADHAN 2K26</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0D3F7A;--navy2:#1D5FA8;--navy3:#2A7AC4;
+  --orange:#E8772E;--orange2:#F59040;
+  --bg:#EAF2FB;--white:#FFFFFF;
+  --surface:#F4F8FD;--surface2:#E0EAF7;
+  --text:#0A2444;--text2:#3A5A8A;--text3:#7A9ABD;
+  --green:#1B9E68;--green-bg:#E4F6EF;
+  --red:#D94040;--red-bg:#FDE8E8;
+  --yellow:#C98A00;--yellow-bg:#FFF4D4;
+  --border:#C8DCF0;
+  --purple:#7C3AED;--purple-bg:#EDE9FE;
+  --teal:#0D9488;--teal-bg:#CCFBF1;
+}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* NAV */
+.topbar{background:var(--navy);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-logo{display:flex;align-items:center;gap:10px}
+.logo-box{width:32px;height:32px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;letter-spacing:-0.5px}
+.logo-name{font-size:16px;font-weight:700;color:#fff;letter-spacing:-0.3px}
+.logo-sub{font-size:10px;color:#7AABD8;font-weight:400}
+.topbar-nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav-btn{padding:6px 12px;border-radius:20px;border:none;cursor:pointer;font-size:11px;font-family:'Sora',sans-serif;font-weight:500;transition:all .2s;background:transparent;color:#7AABD8}
+.nav-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-btn.active{background:var(--orange);color:#fff}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--navy3);border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff}
+.notif-bell{position:relative;cursor:pointer;font-size:18px}
+.notif-badge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:var(--red);border-radius:50%;font-size:9px;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--navy)}
+
+/* SCREENS */
+.screen{display:none;padding:24px;max-width:1200px;margin:0 auto;animation:fadeIn .25s ease}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#1A6AB5 100%);border-radius:20px;padding:40px 40px 0;display:grid;grid-template-columns:1fr 380px;gap:24px;overflow:hidden;margin-bottom:24px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,119,46,.2);border:1px solid rgba(232,119,46,.4);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--orange2);font-weight:600;margin-bottom:16px}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-title{font-size:36px;font-weight:800;color:#fff;line-height:1.15;letter-spacing:-1px;margin-bottom:12px}
+.hero-title span{color:var(--orange2)}
+.hero-desc{font-size:14px;color:#89B8E0;line-height:1.7;max-width:460px;margin-bottom:24px}
+.hero-btns{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:#fff;border:none;padding:10px 22px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s}
+.btn-primary:hover{background:var(--orange2);transform:translateY(-1px)}
+.btn-outline{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);padding:10px 22px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s}
+.btn-outline:hover{background:rgba(255,255,255,.18)}
+.hero-stats{display:flex;gap:28px}
+.hstat{text-align:left}
+.hstat-num{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.5px}
+.hstat-lbl{font-size:10px;color:#7AABD8;font-weight:400;margin-top:2px}
+.hero-phone{align-self:flex-end;background:var(--surface);border-radius:16px 16px 0 0;padding:16px;box-shadow:0 -8px 40px rgba(0,0,0,.3)}
+.phone-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.phone-title{font-size:12px;font-weight:700;color:var(--navy)}
+.status-pill{font-size:10px;background:var(--green-bg);color:var(--green);padding:3px 8px;border-radius:10px;font-weight:600}
+.phone-card{background:var(--navy);border-radius:12px;padding:14px;margin-bottom:10px}
+.pc-label{font-size:9px;color:#7AABD8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.pc-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.pc-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange2);margin-bottom:10px}
+.pc-items{display:flex;gap:6px}
+.pc-item{flex:1;background:rgba(255,255,255,.08);border-radius:6px;padding:7px;text-align:center}
+.pc-item-val{font-size:13px;font-weight:700;color:#fff}
+.pc-item-lbl{font-size:8px;color:#7AABD8;margin-top:1px}
+.phone-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
+.phone-row:last-child{border-bottom:none}
+.pr-left{display:flex;align-items:center;gap:8px}
+.pr-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px}
+.pr-text{font-size:11px;font-weight:600;color:var(--text)}
+.pr-sub{font-size:9px;color:var(--text3);margin-top:1px}
+.pr-badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:8px}
+
+/* SECTION HEADER */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.section-title{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-0.3px}
+.section-link{font-size:12px;color:var(--navy2);font-weight:500;cursor:pointer}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-card{background:var(--white);border-radius:14px;padding:18px;border:1px solid var(--border);position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.stat-card.blue::before{background:var(--navy2)}
+.stat-card.orange::before{background:var(--orange)}
+.stat-card.green::before{background:var(--green)}
+.stat-card.red::before{background:var(--red)}
+.stat-card.purple::before{background:var(--purple)}
+.stat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px}
+.stat-card.blue .stat-icon{background:#EBF3FD}
+.stat-card.orange .stat-icon{background:#FDF0E6}
+.stat-card.green .stat-icon{background:var(--green-bg)}
+.stat-card.red .stat-icon{background:var(--red-bg)}
+.stat-card.purple .stat-icon{background:var(--purple-bg)}
+.stat-num{font-size:26px;font-weight:800;color:var(--text);letter-spacing:-1px}
+.stat-lbl{font-size:12px;color:var(--text3);margin-top:3px;font-weight:400}
+.stat-change{font-size:11px;font-weight:600;margin-top:8px;display:flex;align-items:center;gap:4px}
+.stat-change.up{color:var(--green)}
+.stat-change.down{color:var(--red)}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px}
+.col-span2{grid-column:span 2}
+
+/* CARD */
+.card{background:var(--white);border-radius:14px;padding:20px;border:1px solid var(--border)}
+.card-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-0.2px}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse}
+.data-table th{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.data-table td{font-size:13px;color:var(--text);padding:10px 12px;border-bottom:1px solid var(--surface2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:var(--surface)}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:8px;font-size:11px;font-weight:600}
+.badge.success{background:var(--green-bg);color:var(--green)}
+.badge.danger{background:var(--red-bg);color:var(--red)}
+.badge.warning{background:var(--yellow-bg);color:var(--yellow)}
+.badge.info{background:#E8F0FB;color:var(--navy2)}
+.badge.purple{background:var(--purple-bg);color:var(--purple)}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+
+/* PROGRESS BAR */
+.progress-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.progress-label{font-size:12px;color:var(--text2);min-width:120px;font-weight:500}
+.progress-track{flex:1;background:var(--surface2);border-radius:4px;height:7px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;transition:width .6s ease}
+.progress-pct{font-size:11px;font-weight:700;min-width:36px;text-align:right;color:var(--text)}
+
+/* TIMELINE */
+.timeline-item{display:flex;gap:14px;margin-bottom:16px;position:relative}
+.tl-dot-wrap{display:flex;flex-direction:column;align-items:center}
+.tl-dot{width:10px;height:10px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.tl-line{width:1px;background:var(--border);flex:1;margin-top:4px}
+.tl-title{font-size:13px;font-weight:600;color:var(--text)}
+.tl-time{font-size:11px;color:var(--text3);margin-top:2px}
+.tl-desc{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.5}
+
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-label{font-size:12px;font-weight:600;color:var(--text2)}
+.form-input{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:9px 13px;font-size:13px;color:var(--text);font-family:'Sora',sans-serif;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:var(--navy2);background:var(--white)}
+.form-select{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:9px 13px;font-size:13px;color:var(--text);font-family:'Sora',sans-serif;outline:none;appearance:none;cursor:pointer}
+.form-textarea{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:10px 13px;font-size:13px;color:var(--text);font-family:'Sora',sans-serif;outline:none;resize:none;width:100%}
+.form-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
+.btn-submit{background:var(--navy);color:#fff;border:none;padding:10px 24px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s}
+.btn-submit:hover{background:var(--navy2)}
+.btn-cancel{background:transparent;color:var(--text2);border:1px solid var(--border);padding:10px 18px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Sora',sans-serif}
+
+/* STEPS */
+.steps-row{display:flex;align-items:flex-start;gap:0;margin-bottom:24px;position:relative}
+.step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
+.step:not(:last-child)::after{content:'';position:absolute;top:18px;left:50%;right:-50%;height:2px;background:var(--border);z-index:0}
+.step.done:not(:last-child)::after{background:var(--green)}
+.step-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;position:relative;z-index:1;border:2px solid var(--border);background:var(--white);color:var(--text3)}
+.step.done .step-num{background:var(--green);color:#fff;border-color:var(--green)}
+.step.current .step-num{background:var(--navy);color:#fff;border-color:var(--navy)}
+.step-lbl{font-size:10px;font-weight:600;color:var(--text3);margin-top:6px;max-width:80px}
+.step.done .step-lbl{color:var(--green)}
+.step.current .step-lbl{color:var(--navy)}
+
+/* CHART BAR */
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:120px;padding-bottom:20px;position:relative}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative}
+.bar{border-radius:5px 5px 0 0;transition:height .6s ease;width:100%;cursor:pointer}
+.bar:hover{filter:brightness(1.1)}
+.bar-lbl{font-size:9px;color:var(--text3);position:absolute;bottom:-16px;white-space:nowrap}
+.bar-val{font-size:9px;font-weight:700;color:var(--text2);margin-bottom:2px}
+
+/* MAP PLACEHOLDER */
+.map-placeholder{background:linear-gradient(135deg,#D6EBFA 0%,#C0D8F0 100%);border-radius:12px;height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.map-pin{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--navy2);border:2px solid var(--white)}
+.map-pin::after{content:'';position:absolute;top:-3px;left:-3px;right:-3px;bottom:-3px;border-radius:50%;background:rgba(29,95,168,.3)}
+.map-label{position:absolute;font-size:9px;font-weight:700;color:var(--navy);background:var(--white);padding:2px 6px;border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+
+/* BIOMETRIC SCREEN */
+.bio-card{background:var(--navy);border-radius:16px;padding:28px;text-align:center;max-width:320px;margin:0 auto}
+.bio-icon{width:80px;height:80px;background:rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:36px;border:2px dashed rgba(255,255,255,.2)}
+.bio-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}
+.bio-sub{font-size:12px;color:#7AABD8;margin-bottom:20px;line-height:1.5}
+.bio-progress{background:rgba(255,255,255,.1);border-radius:4px;height:6px;overflow:hidden;margin-bottom:12px}
+.bio-fill{height:100%;border-radius:4px;background:var(--orange2);width:70%;animation:bio-scan 2s linear infinite}
+@keyframes bio-scan{0%{width:0%}100%{width:100%}}
+.bio-status{font-size:11px;color:#7AABD8}
+
+/* NOTIF */
+.notif{display:flex;gap:10px;padding:10px 12px;border-radius:10px;background:var(--surface);margin-bottom:8px;align-items:flex-start;position:relative}
+.notif.unread{background:#EBF5FF;border-left:3px solid var(--navy2)}
+.notif-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.notif-title{font-size:12px;font-weight:600;color:var(--text)}
+.notif-body{font-size:11px;color:var(--text2);margin-top:2px;line-height:1.4}
+.notif-time{font-size:10px;color:var(--text3);margin-top:3px}
+.notif-dismiss{position:absolute;top:8px;right:8px;cursor:pointer;font-size:12px;color:var(--text3);background:none;border:none;font-family:'Sora',sans-serif}
+
+/* GRIEVANCE */
+.griev-card{background:var(--white);border-radius:12px;padding:14px 16px;border:1px solid var(--border);margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.griev-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--navy2);font-weight:600;margin-bottom:4px}
+.griev-title{font-size:13px;font-weight:600;color:var(--text)}
+.griev-meta{font-size:11px;color:var(--text3);margin-top:3px}
+.griev-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+
+/* FOOTER BAR */
+.footer-bar{background:var(--navy);margin-top:40px;padding:16px 24px;text-align:center}
+.footer-bar p{font-size:11px;color:#4A7AB0}
+.footer-bar span{color:var(--orange2);font-weight:600}
+
+/* ══ ELIGIBILITY CHECK ══ */
+.elig-hero{background:linear-gradient(135deg,#0D3F7A,#1D5FA8);border-radius:20px;padding:32px;margin-bottom:24px;text-align:center}
+.elig-hero h2{font-size:28px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-0.5px}
+.elig-hero p{font-size:14px;color:#89B8E0;margin-bottom:24px}
+.elig-search-row{display:flex;gap:10px;max-width:600px;margin:0 auto}
+.elig-input{flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:12px 18px;font-size:15px;color:#fff;font-family:'Sora',sans-serif;outline:none}
+.elig-input::placeholder{color:rgba(255,255,255,.5)}
+.elig-input:focus{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)}
+.btn-check{background:var(--orange);color:#fff;border:none;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s;white-space:nowrap}
+.btn-check:hover{background:var(--orange2)}
+
+.elig-result{display:none;animation:fadeIn .3s ease}
+.elig-result.show{display:block}
+
+.elig-card-success{background:var(--white);border-radius:16px;border:2px solid var(--green);padding:24px;margin-bottom:20px}
+.elig-card-fail{background:var(--white);border-radius:16px;border:2px solid var(--red);padding:24px;margin-bottom:20px}
+.elig-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.elig-status-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.elig-status-icon.ok{background:var(--green-bg)}
+.elig-status-icon.fail{background:var(--red-bg)}
+.elig-name{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.3px}
+.elig-id-mono{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--navy2);margin-top:3px}
+
+.elig-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.elig-detail-item{background:var(--surface);border-radius:10px;padding:12px}
+.edi-label{font-size:10px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.edi-value{font-size:14px;font-weight:700;color:var(--text)}
+
+.elig-quota-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.elig-quota-table th{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.elig-quota-table td{font-size:13px;color:var(--text);padding:10px 12px;border-bottom:1px solid var(--surface2)}
+.elig-quota-table tr:last-child td{border-bottom:none}
+
+.elig-avail-banner{background:var(--green-bg);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px}
+.elig-avail-banner.low{background:var(--yellow-bg)}
+.elig-avail-banner.unavail{background:var(--red-bg)}
+
+/* ══ DASHBOARD ══ */
+.dash-welcome{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:16px;padding:24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between}
+.dash-welcome-left h2{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.3px;margin-bottom:4px}
+.dash-welcome-left p{font-size:13px;color:#89B8E0}
+.dash-quick-actions{display:flex;gap:10px}
+.qa-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;padding:8px 14px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;transition:all .2s;display:flex;align-items:center;gap:6px}
+.qa-btn:hover{background:rgba(255,255,255,.2)}
+
+.ration-status-card{background:var(--white);border-radius:14px;border:1px solid var(--border);padding:20px;margin-bottom:16px}
+.rsc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.rsc-month{font-size:14px;font-weight:700;color:var(--text)}
+.rsc-items{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.rsc-item{border-radius:12px;padding:14px;text-align:center;border:2px solid transparent}
+.rsc-item.collected{background:var(--green-bg);border-color:var(--green)}
+.rsc-item.pending{background:var(--yellow-bg);border-color:var(--yellow)}
+.rsc-item.not-avail{background:var(--red-bg);border-color:var(--red)}
+.rsc-emoji{font-size:22px;margin-bottom:6px}
+.rsc-name{font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px}
+.rsc-qty{font-size:13px;font-weight:800;color:var(--text)}
+.rsc-status{font-size:10px;font-weight:600;margin-top:4px}
+.rsc-item.collected .rsc-status{color:var(--green)}
+.rsc-item.pending .rsc-status{color:var(--yellow)}
+.rsc-item.not-avail .rsc-status{color:var(--red)}
+
+/* LIVE RATION AVAILABILITY */
+.avail-card{background:var(--white);border-radius:14px;border:1px solid var(--border);padding:18px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.avail-left{display:flex;align-items:center;gap:12px}
+.avail-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.avail-name{font-size:14px;font-weight:700;color:var(--text)}
+.avail-fps{font-size:11px;color:var(--text3);margin-top:2px}
+.avail-right{text-align:right}
+.avail-pill{font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px}
+.avail-pill.available{background:var(--green-bg);color:var(--green)}
+.avail-pill.low{background:var(--yellow-bg);color:var(--yellow)}
+.avail-pill.out{background:var(--red-bg);color:var(--red)}
+.avail-date{font-size:10px;color:var(--text3);margin-top:4px}
+
+/* ══ NOTIFICATIONS SCREEN ══ */
+.notif-filter-row{display:flex;gap:8px;margin-bottom:20px}
+.nf-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;background:var(--white);color:var(--text2);transition:all .2s}
+.nf-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.notif-full{display:flex;gap:12px;padding:14px 16px;border-radius:12px;background:var(--white);border:1px solid var(--border);margin-bottom:10px;align-items:flex-start;position:relative;transition:all .2s}
+.notif-full.unread{border-left:4px solid var(--navy2);background:#F0F7FF}
+.notif-full:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.notif-full-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.notif-full-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.notif-full-body{font-size:12px;color:var(--text2);line-height:1.5}
+.notif-full-time{font-size:10px;color:var(--text3);margin-top:5px}
+.notif-full-tag{position:absolute;top:12px;right:12px}
+.unread-dot{width:8px;height:8px;border-radius:50%;background:var(--navy2);position:absolute;top:18px;right:14px}
+
+/* ══ HELPLINE ══ */
+.helpline-hero{background:linear-gradient(135deg,#0D3F7A,#7C3AED);border-radius:20px;padding:32px;margin-bottom:24px;text-align:center}
+.helpline-hero h2{font-size:26px;font-weight:800;color:#fff;margin-bottom:8px}
+.helpline-hero p{font-size:13px;color:#C4B5FD;margin-bottom:0}
+.helpline-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.helpline-card{background:var(--white);border-radius:16px;padding:24px;border:1px solid var(--border);text-align:center;transition:all .2s;cursor:pointer}
+.helpline-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.hl-icon{font-size:36px;margin-bottom:12px}
+.hl-name{font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px}
+.hl-number{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--navy2);margin-bottom:6px}
+.hl-desc{font-size:11px;color:var(--text3);line-height:1.5}
+.hl-avail{font-size:10px;font-weight:600;color:var(--green);margin-top:8px}
+.btn-call{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;padding:8px 18px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;margin-top:12px;transition:all .2s}
+.btn-call:hover{background:#17875A}
+
+.hl-complaint-card{background:var(--white);border-radius:16px;border:1px solid var(--border);padding:24px;margin-bottom:24px}
+.complaint-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+
+/* COMPLAINT STATUS TRACKER */
+.complaint-tracker{background:var(--surface);border-radius:12px;padding:16px;margin-top:16px}
+.ct-header{font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px}
+.ct-step{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.ct-step:last-child{border-bottom:none}
+.ct-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.ct-num.done{background:var(--green);color:#fff}
+.ct-num.active{background:var(--navy);color:#fff}
+.ct-num.pending{background:var(--surface2);color:var(--text3)}
+.ct-label{font-size:12px;font-weight:600;color:var(--text)}
+.ct-time{font-size:10px;color:var(--text3);margin-left:auto}
+
+/* QUICK COMPLAINT BUTTON */
+.quick-complaint{background:linear-gradient(135deg,var(--red),#B03030);border-radius:14px;padding:20px;color:#fff;display:flex;align-items:center;gap:16px;cursor:pointer;transition:all .2s;border:none;width:100%;font-family:'Sora',sans-serif;text-align:left}
+.quick-complaint:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(217,64,64,.3)}
+
+/* ALERT BANNER */
+.alert-banner{border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.alert-banner.info{background:#EBF5FF;border:1px solid #BAD7F0}
+.alert-banner.success{background:var(--green-bg);border:1px solid #9BE6C8}
+.alert-banner.warning{background:var(--yellow-bg);border:1px solid #F3D08A}
+.alert-banner.danger{background:var(--red-bg);border:1px solid #F0A0A0}
+
+/* TABS */
+.tab-row{display:flex;gap:4px;background:var(--surface2);padding:4px;border-radius:12px;margin-bottom:20px}
+.tab-btn{flex:1;padding:8px 12px;border-radius:9px;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:'Sora',sans-serif;background:transparent;color:var(--text2);transition:all .2s}
+.tab-btn.active{background:var(--white);color:var(--navy);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeIn .2s ease}
+
+/* COMPLAINT REGISTERED SUCCESS */
+.success-popup{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:999;align-items:center;justify-content:center}
+.success-popup.show{display:flex}
+.success-box{background:var(--white);border-radius:20px;padding:40px;text-align:center;max-width:380px;width:90%;animation:slideUp .3s ease}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.success-icon{font-size:48px;margin-bottom:16px}
+.success-title{font-size:20px;font-weight:800;color:var(--text);margin-bottom:8px}
+.success-id{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--navy2);font-weight:600;background:var(--surface);padding:8px 16px;border-radius:8px;margin:12px 0}
+.success-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px}
+.btn-ok{background:var(--navy);color:#fff;border:none;padding:12px 32px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif}
+</style>
+</head>
+<body>
+
+<!-- COMPLAINT REGISTERED POPUP -->
+<div class="success-popup" id="complaintPopup">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <div class="success-title">Complaint Registered!</div>
+    <div class="success-id" id="newComplaintId">GRV-2026-MP-009201</div>
+    <div class="success-desc">Your complaint has been logged. You will receive SMS and notification updates. Resolution expected within <strong>48 hours</strong>.</div>
+    <button class="btn-ok" onclick="closeComplaintPopup()">Done</button>
+  </div>
+</div>
+
+<!-- TOP NAV -->
+<div class="topbar">
+  <div class="topbar-logo">
+    <div class="logo-box">PDS</div>
+    <div>
+      <div class="logo-name">PDS Darpan</div>
+      <div class="logo-sub">SMART SAMADHAN 2K26</div>
+    </div>
+  </div>
+  <div class="topbar-nav">
+    <button class="nav-btn active" onclick="showScreen('home',this)">Home</button>
+    <button class="nav-btn" onclick="showScreen('dashboard',this)">🏠 My Dashboard</button>
+    <button class="nav-btn" onclick="showScreen('eligibility',this)">✅ Eligibility</button>
+    <button class="nav-btn" onclick="showScreen('notifications',this)">🔔 Notifications <span id="notif-count-nav" style="background:var(--red);color:#fff;border-radius:8px;padding:1px 5px;font-size:9px;margin-left:2px">4</span></button>
+    <button class="nav-btn" onclick="showScreen('beneficiary',this)">Beneficiary</button>
+    <button class="nav-btn" onclick="showScreen('fps',this)">FPS Dealer</button>
+    <button class="nav-btn" onclick="showScreen('admin',this)">Admin</button>
+    <button class="nav-btn" onclick="showScreen('helpline',this)">📞 Helpline & Complaint</button>
+    <button class="nav-btn" onclick="showScreen('grievance',this)">Grievance</button>
+  </div>
+  <div class="topbar-right">
+    <div class="notif-bell" onclick="showScreen('notifications',document.querySelectorAll('.nav-btn')[3])">🔔<div class="notif-badge" id="notif-bell-badge">4</div></div>
+    <div class="avatar">RK</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HOME ═══════════════════════ -->
+<div class="screen active" id="screen-home">
+  <div class="hero">
+    <div>
+      <div class="hero-badge"><div class="hero-dot"></div>Live System Active</div>
+      <h1 class="hero-title">Public Distribution<br><span>Made Transparent.</span></h1>
+      <p class="hero-desc">PDS Darpan digitizes ration distribution across Madhya Pradesh — eliminating leakage, enabling real-time tracking, and empowering every beneficiary.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showScreen('dashboard',document.querySelectorAll('.nav-btn')[1])">My Dashboard</button>
+        <button class="btn-primary" style="background:var(--teal)" onclick="showScreen('eligibility',document.querySelectorAll('.nav-btn')[2])">Check Eligibility</button>
+        <button class="btn-outline" onclick="showScreen('admin',document.querySelectorAll('.nav-btn')[6])">Admin Panel</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-num">8.2Cr</div><div class="hstat-lbl">Beneficiaries</div></div>
+        <div class="hstat"><div class="hstat-num">5.5L</div><div class="hstat-lbl">FPS Shops</div></div>
+        <div class="hstat"><div class="hstat-num">↓40%</div><div class="hstat-lbl">Leakage Cut</div></div>
+        <div class="hstat"><div class="hstat-num">99.2%</div><div class="hstat-lbl">Uptime</div></div>
+      </div>
+    </div>
+    <div class="hero-phone">
+      <div class="phone-header">
+        <span class="phone-title">Ration Card Details</span>
+        <span class="status-pill">✓ Verified</span>
+      </div>
+      <div class="phone-card">
+        <div class="pc-label">Beneficiary</div>
+        <div class="pc-name">Ramesh Kumar Patel</div>
+        <div class="pc-id">MP-RTC-2024-4471892</div>
+        <div class="pc-items">
+          <div class="pc-item"><div class="pc-item-val">5</div><div class="pc-item-lbl">Members</div></div>
+          <div class="pc-item"><div class="pc-item-val">APL</div><div class="pc-item-lbl">Category</div></div>
+          <div class="pc-item"><div class="pc-item-val">Mar</div><div class="pc-item-lbl">Month</div></div>
+        </div>
+      </div>
+      <div class="phone-row">
+        <div class="pr-left"><div class="pr-icon" style="background:#EBF3FD;font-size:13px;">🌾</div><div><div class="pr-text">Wheat</div><div class="pr-sub">Quota: 25 kg</div></div></div>
+        <span class="pr-badge" style="background:#E4F6EF;color:#1B9E68">Collected</span>
+      </div>
+      <div class="phone-row">
+        <div class="pr-left"><div class="pr-icon" style="background:#FDF0E6;font-size:13px;">🍚</div><div><div class="pr-text">Rice</div><div class="pr-sub">Quota: 20 kg</div></div></div>
+        <span class="pr-badge" style="background:#E4F6EF;color:#1B9E68">Collected</span>
+      </div>
+      <div class="phone-row">
+        <div class="pr-left"><div class="pr-icon" style="background:#FFF4D4;font-size:13px;">🫙</div><div><div class="pr-text">Sugar</div><div class="pr-sub">Quota: 2 kg</div></div></div>
+        <span class="pr-badge" style="background:#FFF4D4;color:#C98A00">Pending</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><div class="section-title">Platform Features</div></div>
+  <div class="three-col">
+    <div class="card" style="border-top:3px solid var(--navy2)">
+      <div style="font-size:28px;margin-bottom:12px">🔐</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">Biometric Authentication</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">Aadhaar-linked fingerprint verification at every FPS shop. Zero ghost beneficiaries.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--orange)">
+      <div style="font-size:28px;margin-bottom:12px">✅</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">Eligibility Check</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">Instantly verify ration card eligibility using Ration Number. See your quota and availability.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green)">
+      <div style="font-size:28px;margin-bottom:12px">🔔</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">Real-time Notifications</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">Get alerts when ration is available, stock is low, or your complaint is resolved.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--red)">
+      <div style="font-size:28px;margin-bottom:12px">📞</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">24/7 Helpline</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">Call toll-free 1967 or 1800-233-3663 for immediate assistance in Hindi & regional languages.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--purple)">
+      <div style="font-size:28px;margin-bottom:12px">🏠</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">Personal Dashboard</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">Track your monthly quota, collection history, and live ration availability in one place.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--teal)">
+      <div style="font-size:28px;margin-bottom:12px">🗣️</div>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px">Grievance Portal</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">File, track, and resolve complaints in Hindi & regional languages. 48-hour resolution SLA.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MY DASHBOARD ═══════════════════════ -->
+<div class="screen" id="screen-dashboard">
+  <div class="dash-welcome">
+    <div class="dash-welcome-left">
+      <h2>Welcome back, Ramesh Kumar 👋</h2>
+      <p>Ration Card: MP-RTC-2024-4471892 · Ratlam District, MP · March 2026</p>
+    </div>
+    <div class="dash-quick-actions">
+      <button class="qa-btn" onclick="showScreen('eligibility',document.querySelectorAll('.nav-btn')[2])">✅ Check Eligibility</button>
+      <button class="qa-btn" onclick="showScreen('helpline',document.querySelectorAll('.nav-btn')[7])">📞 Register Complaint</button>
+      <button class="qa-btn" onclick="showScreen('notifications',document.querySelectorAll('.nav-btn')[3])">🔔 Notifications</button>
+    </div>
+  </div>
+
+  <!-- Ration Status This Month -->
+  <div class="ration-status-card">
+    <div class="rsc-header">
+      <div class="rsc-month">🗓️ March 2026 — Your Ration Status</div>
+      <span class="badge success"><span class="badge-dot"></span>3 of 4 collected</span>
+    </div>
+    <div class="rsc-items">
+      <div class="rsc-item collected">
+        <div class="rsc-emoji">🌾</div>
+        <div class="rsc-name">WHEAT</div>
+        <div class="rsc-qty">25 kg</div>
+        <div class="rsc-status">✓ Collected 14 Mar</div>
+      </div>
+      <div class="rsc-item collected">
+        <div class="rsc-emoji">🍚</div>
+        <div class="rsc-name">RICE</div>
+        <div class="rsc-qty">20 kg</div>
+        <div class="rsc-status">✓ Collected 14 Mar</div>
+      </div>
+      <div class="rsc-item pending">
+        <div class="rsc-emoji">🫙</div>
+        <div class="rsc-name">SUGAR</div>
+        <div class="rsc-qty">2 kg</div>
+        <div class="rsc-status">⚠ Pending — Low stock</div>
+      </div>
+      <div class="rsc-item collected">
+        <div class="rsc-emoji">🛢️</div>
+        <div class="rsc-name">KEROSENE</div>
+        <div class="rsc-qty">1 Litre</div>
+        <div class="rsc-status">✓ Collected 14 Mar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Banner -->
+  <div class="alert-banner warning">
+    <span style="font-size:20px">⚠️</span>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:var(--yellow)">Sugar Stock Alert — Your FPS Shop</div>
+      <div style="font-size:12px;color:var(--text2);margin-top:2px">Sugar is currently unavailable at Ram Prasad Fair Price Shop. Expected restocking: 26 March 2026. You will be notified when it arrives.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <!-- Live Ration Availability -->
+    <div>
+      <div class="section-header"><div class="section-title">📦 Live Ration Availability</div><span class="section-link" style="font-size:11px">Last updated: 10 min ago</span></div>
+      <div class="avail-card">
+        <div class="avail-left">
+          <div class="avail-icon" style="background:#EBF3FD">🌾</div>
+          <div>
+            <div class="avail-name">Wheat</div>
+            <div class="avail-fps">Ram Prasad FPS · Ward 7, Ratlam</div>
+          </div>
+        </div>
+        <div class="avail-right">
+          <div class="avail-pill available">✓ Available</div>
+          <div class="avail-date">Stock: 78% · Collect anytime</div>
+        </div>
+      </div>
+      <div class="avail-card">
+        <div class="avail-left">
+          <div class="avail-icon" style="background:#FDF0E6">🍚</div>
+          <div>
+            <div class="avail-name">Rice</div>
+            <div class="avail-fps">Ram Prasad FPS · Ward 7, Ratlam</div>
+          </div>
+        </div>
+        <div class="avail-right">
+          <div class="avail-pill available">✓ Available</div>
+          <div class="avail-date">Stock: 55% · Collect anytime</div>
+        </div>
+      </div>
+      <div class="avail-card">
+        <div class="avail-left">
+          <div class="avail-icon" style="background:var(--yellow-bg)">🫙</div>
+          <div>
+            <div class="avail-name">Sugar</div>
+            <div class="avail-fps">Ram Prasad FPS · Ward 7, Ratlam</div>
+          </div>
+        </div>
+        <div class="avail-right">
+          <div class="avail-pill out">✗ Out of Stock</div>
+          <div class="avail-date">Restock expected: 26 Mar</div>
+        </div>
+      </div>
+      <div class="avail-card">
+        <div class="avail-left">
+          <div class="avail-icon" style="background:#F3E8FF">🛢️</div>
+          <div>
+            <div class="avail-name">Kerosene</div>
+            <div class="avail-fps">Ram Prasad FPS · Ward 7, Ratlam</div>
+          </div>
+        </div>
+        <div class="avail-right">
+          <div class="avail-pill low">⚡ Low Stock</div>
+          <div class="avail-date">Stock: 22% · Collect soon</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div>
+      <div class="section-header"><div class="section-title">🔔 Recent Notifications</div><span class="section-link" onclick="showScreen('notifications',document.querySelectorAll('.nav-btn')[3])">View all →</span></div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="notif unread">
+          <div class="notif-icon" style="background:var(--red-bg)">🚨</div>
+          <div><div class="notif-title">Sugar not yet available</div><div class="notif-body">Your sugar quota (2 kg) is pending due to low stock. Expected 26 Mar.</div><div class="notif-time">Today, 9:00 AM</div></div>
+        </div>
+        <div class="notif unread">
+          <div class="notif-icon" style="background:var(--green-bg)">✅</div>
+          <div><div class="notif-title">March ration partially collected</div><div class="notif-body">Wheat 25 kg + Rice 20 kg + Kerosene collected on 14 Mar.</div><div class="notif-time">14 Mar, 2:15 PM</div></div>
+        </div>
+        <div class="notif">
+          <div class="notif-icon" style="background:var(--yellow-bg)">⚠️</div>
+          <div><div class="notif-title">Sugar stock low at your FPS</div><div class="notif-body">Sugar quota may be delayed. Visit shop on 26 Mar for collection.</div><div class="notif-time">12 Mar, 11:00 AM</div></div>
+        </div>
+      </div>
+
+      <div class="section-header"><div class="section-title">📋 Quick Actions</div></div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <button class="quick-complaint" onclick="showScreen('helpline',document.querySelectorAll('.nav-btn')[7])">
+          <div style="font-size:28px">📞</div>
+          <div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:3px">Register a Complaint</div>
+            <div style="font-size:11px;opacity:.8">Ration not received? Wrong quantity? File complaint and track online.</div>
+          </div>
+          <div style="margin-left:auto;font-size:18px">→</div>
+        </button>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="btn-submit" onclick="showScreen('eligibility',document.querySelectorAll('.nav-btn')[2])" style="padding:12px">✅ Check Eligibility</button>
+          <button class="btn-submit" style="background:var(--teal);padding:12px" onclick="showScreen('grievance',document.querySelectorAll('.nav-btn')[8])">Track Complaint</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Collection History -->
+  <div class="card">
+    <div class="card-title">📅 Collection History (Last 6 Months)</div>
+    <table class="data-table">
+      <tr><th>Month</th><th>Items Collected</th><th>Collection Date</th><th>FPS Shop</th><th>Status</th></tr>
+      <tr><td>Mar 2026</td><td>Wheat 25kg + Rice 20kg + Kerosene 1L</td><td>14 Mar 2026</td><td>RTM-0472</td><td><span class="badge warning">Partial (Sugar pending)</span></td></tr>
+      <tr><td>Feb 2026</td><td>Wheat + Rice + Sugar</td><td>9 Feb 2026</td><td>RTM-0472</td><td><span class="badge success"><span class="badge-dot"></span>Complete</span></td></tr>
+      <tr><td>Jan 2026</td><td>Wheat + Rice + Kerosene</td><td>12 Jan 2026</td><td>RTM-0472</td><td><span class="badge success"><span class="badge-dot"></span>Complete</span></td></tr>
+      <tr><td>Dec 2025</td><td>Wheat + Rice + Sugar</td><td>17 Dec 2025</td><td>RTM-0472</td><td><span class="badge success"><span class="badge-dot"></span>Complete</span></td></tr>
+      <tr><td>Nov 2025</td><td>Wheat only</td><td>22 Nov 2025</td><td>RTM-0391</td><td><span class="badge warning">Partial</span></td></tr>
+      <tr><td>Oct 2025</td><td>Wheat + Rice + Sugar + Kerosene</td><td>5 Oct 2025</td><td>RTM-0472</td><td><span class="badge success"><span class="badge-dot"></span>Complete</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════ ELIGIBILITY CHECK ═══════════════════════ -->
+<div class="screen" id="screen-eligibility">
+  <div class="elig-hero">
+    <h2>✅ Ration Eligibility Check</h2>
+    <p>Enter your Ration Card Number to instantly check eligibility, quota details, and current availability</p>
+    <div class="elig-search-row">
+      <input class="elig-input" type="text" id="rationInput" placeholder="Enter Ration No. (e.g. MP-RTC-2024-4471892)" maxlength="22">
+      <button class="btn-check" onclick="checkEligibility()">🔍 Check Now</button>
+    </div>
+    <div style="margin-top:14px;font-size:12px;color:rgba(255,255,255,.5)">Try: MP-RTC-2024-4471892 (Eligible) &nbsp;|&nbsp; MP-RTC-2023-1234567 (Not Eligible)</div>
+  </div>
+
+  <!-- Result Area -->
+  <div class="elig-result" id="eligResult">
+    <!-- populated by JS -->
+  </div>
+
+  <!-- Info Cards -->
+  <div class="three-col">
+    <div class="card" style="text-align:center;border-top:3px solid var(--navy2)">
+      <div style="font-size:32px;margin-bottom:10px">📋</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">Who is Eligible?</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">BPL families, Antyodaya households, AAY cardholders, and APL families with income below ₹1.2 lakh/year are eligible under NFSA 2013.</div>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--orange)">
+      <div style="font-size:32px;margin-bottom:10px">📦</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">What do you get?</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">5 kg wheat/rice per person per month at ₹2/kg (wheat) and ₹3/kg (rice). Plus sugar, pulses, and kerosene based on category.</div>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--green)">
+      <div style="font-size:32px;margin-bottom:10px">📞</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">Apply for New Card</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">Visit your local Food Civil Supplies office or call <strong>1967</strong> to apply for a new ration card. Documents: Aadhaar, income certificate, address proof.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ NOTIFICATIONS ═══════════════════════ -->
+<div class="screen" id="screen-notifications">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div>
+      <div style="font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.5px">🔔 Notifications</div>
+      <div style="font-size:13px;color:var(--text3);margin-top:4px">Stay updated on ration availability, complaints, and alerts</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span class="badge danger">4 unread</span>
+      <button onclick="markAllRead()" style="font-size:12px;color:var(--navy2);background:none;border:1px solid var(--border);padding:5px 12px;border-radius:8px;cursor:pointer;font-family:'Sora',sans-serif;font-weight:600">Mark all read</button>
+    </div>
+  </div>
+
+  <div class="notif-filter-row">
+    <button class="nf-btn active" onclick="filterNotifs('all',this)">All (8)</button>
+    <button class="nf-btn" onclick="filterNotifs('ration',this)">🌾 Ration (3)</button>
+    <button class="nf-btn" onclick="filterNotifs('complaint',this)">📋 Complaint (2)</button>
+    <button class="nf-btn" onclick="filterNotifs('alert',this)">🚨 Alerts (2)</button>
+    <button class="nf-btn" onclick="filterNotifs('system',this)">⚙️ System (1)</button>
+  </div>
+
+  <div id="notifList">
+    <div class="notif-full unread" data-category="ration">
+      <div class="notif-full-icon" style="background:var(--red-bg)">🚨</div>
+      <div style="flex:1">
+        <div class="notif-full-title">Sugar Not Available at Your FPS Shop</div>
+        <div class="notif-full-body">Your sugar quota of 2 kg is pending collection due to stock shortage at Ram Prasad Fair Price Shop (RTM-0472), Ward 7, Ratlam. The shop has reported a supply delay. Restocking is expected on <strong>26 March 2026</strong>. You will receive an SMS and notification as soon as sugar is available. No action is needed from your side at this time.</div>
+        <div class="notif-full-time">📅 Today, 9:00 AM · Ratlam FPS Network</div>
+      </div>
+      <div class="notif-full-tag"><span class="badge danger">Unread</span></div>
+      <div class="unread-dot"></div>
+    </div>
+
+    <div class="notif-full unread" data-category="complaint">
+      <div class="notif-full-icon" style="background:var(--yellow-bg)">🕐</div>
+      <div style="flex:1">
+        <div class="notif-full-title">Complaint Update: GRV-2026-MP-009124</div>
+        <div class="notif-full-body">Your complaint regarding <strong>Sugar quota not dispensed</strong> is currently under investigation by District Officer Sh. Devendra Sharma. FPS dealer records and biometric logs have been reviewed. Resolution expected by <strong>18 March 2026 by 9:14 AM</strong>. You will be notified immediately on resolution.</div>
+        <div class="notif-full-time">📅 17 Mar, 2:30 PM · Grievance Cell</div>
+      </div>
+      <div class="notif-full-tag"><span class="badge warning">In Progress</span></div>
+      <div class="unread-dot"></div>
+    </div>
+
+    <div class="notif-full unread" data-category="ration">
+      <div class="notif-full-icon" style="background:var(--green-bg)">✅</div>
+      <div style="flex:1">
+        <div class="notif-full-title">March Ration Partially Collected</div>
+        <div class="notif-full-body">You have successfully collected <strong>Wheat 25 kg, Rice 20 kg, and Kerosene 1L</strong> on 14 March 2026 from Ram Prasad FPS (RTM-0472) via biometric authentication. Sugar (2 kg) is still pending — you will be notified when available.</div>
+        <div class="notif-full-time">📅 14 Mar, 2:15 PM · FPS RTM-0472</div>
+      </div>
+      <div class="notif-full-tag"><span class="badge warning">Partial</span></div>
+      <div class="unread-dot"></div>
+    </div>
+
+    <div class="notif-full unread" data-category="alert">
+      <div class="notif-full-icon" style="background:var(--purple-bg)">📢</div>
+      <div style="flex:1">
+        <div class="notif-full-title">Kerosene Stock Running Low</div>
+        <div class="notif-full-body">Kerosene stock at your FPS shop (RTM-0472) is at <strong>22%</strong> — running low. If you haven't collected your kerosene quota for March, please do so within the next <strong>3-4 days</strong> to avoid missing your monthly allocation.</div>
+        <div class="notif-full-time">📅 20 Mar, 8:00 AM · Stock Alert System</div>
+      </div>
+      <div class="notif-full-tag"><span class="badge purple">Alert</span></div>
+      <div class="unread-dot"></div>
+    </div>
+
+    <div class="notif-full" data-category="complaint">
+      <div class="notif-full-icon" style="background:var(--green-bg)">✅</div>
+      <div style="flex:1">
+        <div class="notif-full-title">Complaint Resolved: GRV-2026-MP-008841</div>
+        <div class="notif-full-body">Your complaint regarding <strong>Rice quantity short by 5 kg — February collection</strong> has been <strong>resolved</strong> by the Ratlam District Food Office. The shortfall amount has been credited to your next collection quota. Resolved in 31 hours.</div>
+        <div class="notif-full-time">📅 13 Feb, 3:45 PM · District Grievance Cell</div>
+      </div>
+      <div class="notif-full-tag"><span class="badge success">Resolved</span></div>
+    </div>
+
+    <div class="notif-full" data-category="ration">
+      <div class="notif-full-icon" style="background:#EBF3FD">🌾</div>
+      <div style="flex:1">
+        <div class="notif-full-title">February Ration Available for Collection</div>
+        <div class="notif-full-body">Your February 2026 ration quota is now available at Ram Prasad FPS (RTM-0472). Wheat 25 kg, Rice 20 kg, Sugar 2 kg, and Kerosene 1L are all fully stocked. Visit with your Aadhaar card for biometric authentication.</div>
+        <div class="notif-full-time">📅 1 Feb, 10:00 AM · MP Food Dept</div>
+      </div>
+      <div class="notif-full-tag"><span class="badge success">Collected</span></div>
+    </div>
+
+    <div class="notif-full" data-category="alert">
+      <div class="notif-full-icon" style="background:var(--yellow-bg)">⚠️</div>
+      <div style="flex:1">
+        <div class="notif-full-title">System Maintenance — Sunday 10 PM</div>
+        <div class="notif-full-body">PDS Darpan will undergo scheduled maintenance on Sunday 23 March from 10:00 PM to 1:00 AM. Biometric verification at FPS shops will continue to work offline. Online services will resume by 1:00 AM. We apologize for the inconvenience.</div>
+        <div class="notif-full-time">📅 21 Mar, 5:00 PM · System</div>
+      </div>
+      <div class="notif-full-tag"><span class="badge info">System</span></div>
+    </div>
+
+    <div class="notif-full" data-category="system">
+      <div class="notif-full-icon" style="background:#EBF3FD">🎉</div>
+      <div style="flex:1">
+        <div class="notif-full-title">Welcome to PDS Darpan SMART SAMADHAN 2K26</div>
+        <div class="notif-full-body">Your account is successfully linked to your Aadhaar. You can now track ration availability, file complaints, and get real-time notifications. For help, call Toll Free: <strong>1967</strong>.</div>
+        <div class="notif-full-time">📅 1 Jan 2026, 12:00 AM · PDS Darpan</div>
+      </div>
+      <div class="notif-full-tag"><span class="badge info">Welcome</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ BENEFICIARY ═══════════════════════ -->
+<div class="screen" id="screen-beneficiary">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div>
+      <div style="font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.5px">Welcome, Ramesh Kumar 👋</div>
+      <div style="font-size:13px;color:var(--text3);margin-top:4px">March 2026 — Ratlam District, MP</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:11px;color:var(--text3)">Ration Card</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--navy2)">MP-RTC-2024-4471892</div>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card blue"><div class="stat-icon">🌾</div><div class="stat-num">25 kg</div><div class="stat-lbl">Wheat this month</div><div class="stat-change up">✓ Collected 14 Mar</div></div>
+    <div class="stat-card orange"><div class="stat-icon">🍚</div><div class="stat-num">20 kg</div><div class="stat-lbl">Rice this month</div><div class="stat-change up">✓ Collected 14 Mar</div></div>
+    <div class="stat-card green"><div class="stat-icon">🫙</div><div class="stat-num">2 kg</div><div class="stat-lbl">Sugar this month</div><div class="stat-change down">⚠ Pending</div></div>
+    <div class="stat-card red"><div class="stat-icon">🛢️</div><div class="stat-num">1 L</div><div class="stat-lbl">Kerosene this month</div><div class="stat-change up">✓ Collected 14 Mar</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Collection History</div>
+      <table class="data-table">
+        <tr><th>Month</th><th>Items</th><th>Date</th><th>Status</th></tr>
+        <tr><td>Mar 2026</td><td>Wheat+Rice+Oil</td><td>14 Mar</td><td><span class="badge warning">Partial</span></td></tr>
+        <tr><td>Feb 2026</td><td>Wheat+Rice+Sugar</td><td>9 Feb</td><td><span class="badge success"><span class="badge-dot"></span>Done</span></td></tr>
+        <tr><td>Jan 2026</td><td>Wheat+Rice+Oil</td><td>12 Jan</td><td><span class="badge success"><span class="badge-dot"></span>Done</span></td></tr>
+        <tr><td>Dec 2025</td><td>Wheat+Rice+Sugar</td><td>17 Dec</td><td><span class="badge success"><span class="badge-dot"></span>Done</span></td></tr>
+        <tr><td>Nov 2025</td><td>Wheat only</td><td>22 Nov</td><td><span class="badge warning">Partial</span></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">Nearby FPS Shop</div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:44px;height:44px;background:var(--surface);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🏪</div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:700;color:var(--text)">Ram Prasad Fair Price Shop</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:2px">Ward 7, Ratlam Market, 0.4 km away</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:8px">
+              <span class="badge success"><span class="badge-dot"></span>Open</span>
+              <span style="font-size:11px;color:var(--text3)">9 AM – 6 PM</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:600">Current Stock</div>
+          <div class="progress-row"><span class="progress-label" style="font-size:11px">Wheat</span><div class="progress-track"><div class="progress-fill" style="width:78%;background:var(--navy2)"></div></div><span class="progress-pct">78%</span></div>
+          <div class="progress-row"><span class="progress-label" style="font-size:11px">Rice</span><div class="progress-track"><div class="progress-fill" style="width:55%;background:var(--orange)"></div></div><span class="progress-pct">55%</span></div>
+          <div class="progress-row"><span class="progress-label" style="font-size:11px">Sugar</span><div class="progress-track"><div class="progress-fill" style="width:5%;background:var(--red)"></div></div><span class="progress-pct" style="color:var(--red)">5%</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Notifications</div>
+        <div class="notif unread">
+          <div class="notif-icon" style="background:var(--red-bg)">🚨</div>
+          <div><div class="notif-title">Sugar not available</div><div class="notif-body">Pending — expected restock 26 Mar 2026</div><div class="notif-time">Today</div></div>
+        </div>
+        <div class="notif">
+          <div class="notif-icon" style="background:var(--green-bg)">✅</div>
+          <div><div class="notif-title">Ration collected — 14 Mar</div><div class="notif-body">25 kg wheat + 20 kg rice collected by biometric auth</div><div class="notif-time">2 days ago</div></div>
+        </div>
+        <div class="notif">
+          <div class="notif-icon" style="background:var(--yellow-bg)">⚠️</div>
+          <div><div class="notif-title">Kerosene stock low</div><div class="notif-body">Collect kerosene soon — stock at 22%</div><div class="notif-time">4 days ago</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FPS DEALER ═══════════════════════ -->
+<div class="screen" id="screen-fps">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div>
+      <div style="font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.5px">FPS Dashboard</div>
+      <div style="font-size:13px;color:var(--text3);margin-top:4px">Ram Prasad Ration Shop · Ward 7, Ratlam · FPS-MP-RTM-0472</div>
+    </div>
+    <span class="badge success" style="font-size:12px;padding:6px 12px"><span class="badge-dot"></span>Shop Open</span>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card blue"><div class="stat-icon">👤</div><div class="stat-num">342</div><div class="stat-lbl">Registered beneficiaries</div><div class="stat-change up">↑ 12 new this month</div></div>
+    <div class="stat-card green"><div class="stat-icon">✅</div><div class="stat-num">218</div><div class="stat-lbl">Served this month</div><div class="stat-change up">63.7% coverage</div></div>
+    <div class="stat-card orange"><div class="stat-icon">📦</div><div class="stat-num">1,840 kg</div><div class="stat-lbl">Stock remaining</div><div class="stat-change down">↓ Replenish in 6 days</div></div>
+    <div class="stat-card red"><div class="stat-icon">⚠️</div><div class="stat-num">3</div><div class="stat-lbl">Pending grievances</div><div class="stat-change down">2 need action</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Biometric Verification Terminal</div>
+      <div class="bio-card">
+        <div class="bio-icon">👆</div>
+        <div class="bio-title">Place Finger on Scanner</div>
+        <div class="bio-sub">Beneficiary must authenticate via Aadhaar-linked fingerprint to receive ration</div>
+        <div class="bio-progress"><div class="bio-fill"></div></div>
+        <div class="bio-status">Scanning… please hold still</div>
+        <div style="margin-top:16px;padding:10px;background:rgba(255,255,255,.06);border-radius:8px">
+          <div style="font-size:10px;color:#7AABD8;text-align:left;margin-bottom:4px">Last verified</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;text-align:left">Sunita Devi · 11:42 AM</div>
+          <div style="font-size:11px;color:var(--orange2);text-align:left;margin-top:2px">Wheat 25 kg · Rice 20 kg · ✓ Logged</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">Today's Transactions</div>
+        <table class="data-table">
+          <tr><th>Name</th><th>Items</th><th>Time</th><th>Status</th></tr>
+          <tr><td>Ramesh Kumar</td><td>Wheat+Rice</td><td>10:15</td><td><span class="badge success">Done</span></td></tr>
+          <tr><td>Sunita Devi</td><td>Wheat+Rice</td><td>11:42</td><td><span class="badge success">Done</span></td></tr>
+          <tr><td>Mohan Singh</td><td>Wheat+Oil</td><td>12:08</td><td><span class="badge success">Done</span></td></tr>
+          <tr><td>Priya Verma</td><td>All items</td><td>12:55</td><td><span class="badge warning">Partial</span></td></tr>
+          <tr><td>Govind Rao</td><td>—</td><td>—</td><td><span class="badge danger">Not yet</span></td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">Stock Levels</div>
+        <div class="progress-row"><span class="progress-label">Wheat</span><div class="progress-track"><div class="progress-fill" style="width:78%;background:var(--navy2)"></div></div><span class="progress-pct">78%</span></div>
+        <div class="progress-row"><span class="progress-label">Rice</span><div class="progress-track"><div class="progress-fill" style="width:55%;background:var(--orange)"></div></div><span class="progress-pct">55%</span></div>
+        <div class="progress-row"><span class="progress-label">Sugar</span><div class="progress-track"><div class="progress-fill" style="width:5%;background:var(--red)"></div></div><span class="progress-pct" style="color:var(--red)">5%</span></div>
+        <div class="progress-row"><span class="progress-label">Kerosene</span><div class="progress-track"><div class="progress-fill" style="width:22%;background:var(--yellow)"></div></div><span class="progress-pct" style="color:var(--yellow)">22%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ ADMIN ═══════════════════════ -->
+<div class="screen" id="screen-admin">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div>
+      <div style="font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.5px">Admin Analytics Dashboard</div>
+      <div style="font-size:13px;color:var(--text3);margin-top:4px">Madhya Pradesh · March 2026 · Live Data</div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <span class="badge info">Live</span>
+      <span class="badge success"><span class="badge-dot"></span>All systems operational</span>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card blue"><div class="stat-icon">📊</div><div class="stat-num">8.21 Cr</div><div class="stat-lbl">Total beneficiaries</div><div class="stat-change up">↑ 2.3% vs last month</div></div>
+    <div class="stat-card green"><div class="stat-icon">✅</div><div class="stat-num">5.87 Cr</div><div class="stat-lbl">Served this month</div><div class="stat-change up">71.5% coverage</div></div>
+    <div class="stat-card orange"><div class="stat-icon">🚨</div><div class="stat-num">47</div><div class="stat-lbl">Fraud alerts flagged</div><div class="stat-change down">↑ 12 new today</div></div>
+    <div class="stat-card red"><div class="stat-icon">📉</div><div class="stat-num">6.4%</div><div class="stat-lbl">Leakage rate (vs 40%)</div><div class="stat-change up">↓ 33.6% reduction</div></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:16px">
+    <div class="card">
+      <div class="card-title">Monthly Distribution (Cr kg)</div>
+      <div class="bar-chart">
+        <div class="bar-col"><div class="bar-val">24.1</div><div class="bar" style="height:70%;background:var(--navy2)"></div><div class="bar-lbl">Oct</div></div>
+        <div class="bar-col"><div class="bar-val">26.3</div><div class="bar" style="height:76%;background:var(--navy2)"></div><div class="bar-lbl">Nov</div></div>
+        <div class="bar-col"><div class="bar-val">28.9</div><div class="bar" style="height:84%;background:var(--navy2)"></div><div class="bar-lbl">Dec</div></div>
+        <div class="bar-col"><div class="bar-val">27.2</div><div class="bar" style="height:79%;background:var(--navy2)"></div><div class="bar-lbl">Jan</div></div>
+        <div class="bar-col"><div class="bar-val">29.7</div><div class="bar" style="height:86%;background:var(--navy2)"></div><div class="bar-lbl">Feb</div></div>
+        <div class="bar-col"><div class="bar-val">31.4</div><div class="bar" style="height:91%;background:var(--orange)"></div><div class="bar-lbl">Mar</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">District Coverage Map — MP</div>
+      <div class="map-placeholder">
+        <div class="map-pin" style="top:40%;left:30%"></div><div class="map-label" style="top:32%;left:34%">Indore</div>
+        <div class="map-pin" style="top:25%;left:55%"></div><div class="map-label" style="top:17%;left:57%">Gwalior</div>
+        <div class="map-pin" style="top:55%;left:48%"></div><div class="map-label" style="top:59%;left:51%">Bhopal</div>
+        <div class="map-pin" style="top:42%;left:23%"></div><div class="map-label" style="top:34%;left:10%">Ratlam</div>
+        <div class="map-pin" style="top:65%;left:68%"></div><div class="map-label" style="top:69%;left:70%">Jabalpur</div>
+        <div style="position:absolute;bottom:8px;right:10px;display:flex;gap:8px;align-items:center">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div><span style="font-size:9px;color:var(--navy);font-weight:600">90%+ served</span>
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--yellow)"></div><span style="font-size:9px;color:var(--navy);font-weight:600">60–90%</span>
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--red)"></div><span style="font-size:9px;color:var(--navy);font-weight:600">&lt;60%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">AI Fraud Alerts</div>
+      <table class="data-table">
+        <tr><th>FPS ID</th><th>District</th><th>Flag</th><th>Severity</th></tr>
+        <tr><td class="mono">RTM-4821</td><td>Ratlam</td><td>Bulk withdrawal 3 AM</td><td><span class="badge danger">High</span></td></tr>
+        <tr><td class="mono">BPL-2209</td><td>Bhopal</td><td>Ghost beneficiaries (14)</td><td><span class="badge danger">High</span></td></tr>
+        <tr><td class="mono">IDR-7734</td><td>Indore</td><td>Biometric bypass attempt</td><td><span class="badge warning">Medium</span></td></tr>
+        <tr><td class="mono">JBP-1145</td><td>Jabalpur</td><td>Stock mismatch</td><td><span class="badge warning">Medium</span></td></tr>
+        <tr><td class="mono">GWL-3302</td><td>Gwalior</td><td>Unusual collection rate</td><td><span class="badge info">Low</span></td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">District Performance</div>
+      <div class="progress-row"><span class="progress-label">Indore</span><div class="progress-track"><div class="progress-fill" style="width:91%;background:var(--green)"></div></div><span class="progress-pct" style="color:var(--green)">91%</span></div>
+      <div class="progress-row"><span class="progress-label">Bhopal</span><div class="progress-track"><div class="progress-fill" style="width:86%;background:var(--green)"></div></div><span class="progress-pct" style="color:var(--green)">86%</span></div>
+      <div class="progress-row"><span class="progress-label">Gwalior</span><div class="progress-track"><div class="progress-fill" style="width:79%;background:var(--navy2)"></div></div><span class="progress-pct">79%</span></div>
+      <div class="progress-row"><span class="progress-label">Ratlam</span><div class="progress-track"><div class="progress-fill" style="width:74%;background:var(--navy2)"></div></div><span class="progress-pct">74%</span></div>
+      <div class="progress-row"><span class="progress-label">Jabalpur</span><div class="progress-track"><div class="progress-fill" style="width:68%;background:var(--orange)"></div></div><span class="progress-pct" style="color:var(--orange)">68%</span></div>
+      <div class="progress-row"><span class="progress-label">Datia</span><div class="progress-track"><div class="progress-fill" style="width:44%;background:var(--red)"></div></div><span class="progress-pct" style="color:var(--red)">44%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HELPLINE & COMPLAINT ═══════════════════════ -->
+<div class="screen" id="screen-helpline">
+  <div class="helpline-hero">
+    <h2>📞 Helpline & Complaint Center</h2>
+    <p>24/7 support in Hindi, English, and regional languages · All calls are toll-free</p>
+  </div>
+
+  <!-- Helpline Numbers -->
+  <div class="section-header"><div class="section-title">📞 Toll-Free Helpline Numbers</div></div>
+  <div class="helpline-cards">
+    <div class="helpline-card">
+      <div class="hl-icon">📞</div>
+      <div class="hl-name">PDS National Helpline</div>
+      <div class="hl-number">1967</div>
+      <div class="hl-desc">Central Government PDS helpline for ration card issues, eligibility, and complaints across India.</div>
+      <div class="hl-avail">✓ Available 24/7 · Toll Free</div>
+      <br><button class="btn-call">📞 Call 1967</button>
+    </div>
+    <div class="helpline-card">
+      <div class="hl-icon">🏛️</div>
+      <div class="hl-name">MP Food Dept Helpline</div>
+      <div class="hl-number">1800-233-3663</div>
+      <div class="hl-desc">Madhya Pradesh Food and Civil Supplies Department for state-level PDS complaints and issues.</div>
+      <div class="hl-avail">✓ Mon–Sat, 9 AM – 6 PM · Toll Free</div>
+      <br><button class="btn-call">📞 Call 1800-233-3663</button>
+    </div>
+    <div class="helpline-card">
+      <div class="hl-icon">⚡</div>
+      <div class="hl-name">Emergency / Fraud Hotline</div>
+      <div class="hl-number">1800-180-0058</div>
+      <div class="hl-desc">Report dealer fraud, overcharging, biometric tampering, or any emergency PDS-related issue immediately.</div>
+      <div class="hl-avail">✓ Available 24/7 · Priority Line</div>
+      <br><button class="btn-call" style="background:var(--red)">📞 Call Emergency</button>
+    </div>
+  </div>
+
+  <!-- Other contact options -->
+  <div class="two-col" style="margin-bottom:24px">
+    <div class="card">
+      <div class="card-title">💬 Other Ways to Reach Us</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface);border-radius:10px">
+          <div style="font-size:22px">📧</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text)">Email Support</div><div style="font-size:11px;color:var(--text2);margin-top:2px">pds-support@mp.gov.in · Response within 24 hrs</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface);border-radius:10px">
+          <div style="font-size:22px">💬</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text)">WhatsApp Helpdesk</div><div style="font-size:11px;color:var(--text2);margin-top:2px">+91-98765-00001 · Mon–Fri 9 AM–5 PM</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface);border-radius:10px">
+          <div style="font-size:22px">🏢</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text)">District Food Office</div><div style="font-size:11px;color:var(--text2);margin-top:2px">Visit your district's Food & Civil Supplies office for in-person resolution</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface);border-radius:10px">
+          <div style="font-size:22px">📱</div>
+          <div><div style="font-size:13px;font-weight:700;color:var(--text)">SMS Complaints</div><div style="font-size:11px;color:var(--text2);margin-top:2px">SMS "PDS HELP &lt;Ration No&gt;" to 56677</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 Complaint Resolution Stats</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+        <div style="background:var(--green-bg);border-radius:12px;padding:14px;text-align:center">
+          <div style="font-size:26px;font-weight:800;color:var(--green)">94%</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:3px">Resolution rate</div>
+        </div>
+        <div style="background:#EBF5FF;border-radius:12px;padding:14px;text-align:center">
+          <div style="font-size:26px;font-weight:800;color:var(--navy2)">28 hrs</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:3px">Avg resolution time</div>
+        </div>
+        <div style="background:var(--yellow-bg);border-radius:12px;padding:14px;text-align:center">
+          <div style="font-size:26px;font-weight:800;color:var(--yellow)">12,841</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:3px">Complaints this month</div>
+        </div>
+        <div style="background:var(--purple-bg);border-radius:12px;padding:14px;text-align:center">
+          <div style="font-size:26px;font-weight:800;color:var(--purple)">48 hrs</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:3px">SLA commitment</div>
+        </div>
+      </div>
+      <div class="alert-banner success">
+        <span>✅</span>
+        <div style="font-size:12px;color:var(--green)">All helplines are currently operational and accepting calls.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Complaint Form -->
+  <div class="hl-complaint-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <div>
+        <div class="card-title" style="margin-bottom:4px;font-size:17px">📝 Register a New Complaint</div>
+        <div style="font-size:12px;color:var(--text3)">Fill in the form below · Get a complaint ID instantly · Track status online</div>
+      </div>
+      <span class="badge success">SLA: 48 hrs</span>
+    </div>
+
+    <div class="steps-row" style="margin-bottom:24px">
+      <div class="step done"><div class="step-num">✓</div><div class="step-lbl">Verify identity</div></div>
+      <div class="step current"><div class="step-num">2</div><div class="step-lbl">Describe issue</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-lbl">Upload proof</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-lbl">Submit</div></div>
+    </div>
+
+    <div class="complaint-form-grid">
+      <div class="form-group">
+        <label class="form-label">Your Ration Card Number</label>
+        <input class="form-input" type="text" id="complaint-ration" placeholder="MP-RTC-YYYY-XXXXXXX" value="MP-RTC-2024-4471892">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mobile Number</label>
+        <input class="form-input" type="text" id="complaint-mobile" placeholder="10-digit mobile" value="98765 43210">
+      </div>
+    </div>
+    <div class="complaint-form-grid">
+      <div class="form-group">
+        <label class="form-label">Complaint Category</label>
+        <select class="form-select" id="complaint-category">
+          <option>Ration not received</option>
+          <option>Wrong quantity dispensed</option>
+          <option>Biometric failure</option>
+          <option>FPS shop closed</option>
+          <option>Overcharging / extra payment demanded</option>
+          <option>Poor quality grains</option>
+          <option>Dealer misbehaviour</option>
+          <option>Stock not available at FPS</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">FPS Shop ID</label>
+        <input class="form-input" type="text" id="complaint-fps" placeholder="e.g. RTM-0472" value="RTM-0472">
+      </div>
+    </div>
+    <div class="complaint-form-grid">
+      <div class="form-group">
+        <label class="form-label">Date of Incident</label>
+        <input class="form-input" type="date" id="complaint-date" value="2026-03-24">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Item(s) Affected</label>
+        <select class="form-select" id="complaint-item">
+          <option>Wheat</option>
+          <option>Rice</option>
+          <option>Sugar</option>
+          <option>Kerosene</option>
+          <option>Multiple items</option>
+          <option>All items</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:16px">
+      <label class="form-label">Description (Hindi / English)</label>
+      <textarea class="form-textarea" id="complaint-desc" rows="4" placeholder="Describe your issue clearly in Hindi or English… अपनी समस्या हिंदी या अंग्रेज़ी में लिखें…"></textarea>
+    </div>
+    <div class="form-group" style="margin-bottom:16px">
+      <label class="form-label">Upload Evidence (optional)</label>
+      <div style="background:var(--surface);border:2px dashed var(--border);border-radius:10px;padding:20px;text-align:center;cursor:pointer">
+        <div style="font-size:24px;margin-bottom:6px">📎</div>
+        <div style="font-size:12px;color:var(--text2);font-weight:600">Click to upload photo / video</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:3px">JPG, PNG, MP4 · Max 10 MB</div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-cancel">Cancel</button>
+      <button class="btn-submit" onclick="registerComplaint()">Submit Complaint →</button>
+    </div>
+  </div>
+
+  <!-- Complaint Tracker -->
+  <div class="card" style="margin-top:16px">
+    <div class="card-title">🔍 Track Your Complaint</div>
+    <div style="display:flex;gap:10px;margin-bottom:16px">
+      <input class="form-input" type="text" id="trackId" placeholder="Enter Complaint ID (e.g. GRV-2026-MP-009124)" style="flex:1">
+      <button class="btn-submit" onclick="trackComplaint()">Track →</button>
+    </div>
+    <div id="trackResult" style="display:none">
+      <div class="complaint-tracker">
+        <div class="ct-header">Tracking: GRV-2026-MP-009124 · Sugar quota not dispensed</div>
+        <div class="ct-step"><div class="ct-num done">✓</div><div class="ct-label">Complaint Registered</div><div class="ct-time">16 Mar, 9:14 AM</div></div>
+        <div class="ct-step"><div class="ct-num done">✓</div><div class="ct-label">Assigned to District Officer — Sh. Devendra Sharma</div><div class="ct-time">16 Mar, 10:02 AM</div></div>
+        <div class="ct-step"><div class="ct-num active">3</div><div class="ct-label">Under Investigation — FPS records reviewed</div><div class="ct-time">17 Mar, 2:30 PM</div></div>
+        <div class="ct-step"><div class="ct-num pending">4</div><div class="ct-label">Awaiting Resolution</div><div class="ct-time">Expected: 18 Mar, 9:14 AM</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ GRIEVANCE ═══════════════════════ -->
+<div class="screen" id="screen-grievance">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+    <div>
+      <div style="font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.5px">Grievance Redressal Portal</div>
+      <div style="font-size:13px;color:var(--text3);margin-top:4px">File a complaint · Track status · Get resolution in 48 hours</div>
+    </div>
+    <span class="badge success" style="font-size:12px;padding:6px 12px">SLA: 48 hrs</span>
+  </div>
+
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-title" style="margin-bottom:18px">File New Complaint</div>
+    <div class="steps-row">
+      <div class="step done"><div class="step-num">✓</div><div class="step-lbl">Verify identity</div></div>
+      <div class="step current"><div class="step-num">2</div><div class="step-lbl">Describe issue</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-lbl">Upload proof</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-lbl">Submit</div></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Complaint Category</label>
+        <select class="form-select">
+          <option>Ration not received</option>
+          <option>Wrong quantity dispensed</option>
+          <option>Biometric failure</option>
+          <option>FPS shop closed</option>
+          <option>Overcharging</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">FPS Shop ID</label>
+        <input class="form-input" type="text" placeholder="e.g. RTM-0472" value="RTM-0472">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Date of Incident</label>
+        <input class="form-input" type="date" value="2026-03-16">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Contact Number</label>
+        <input class="form-input" type="text" placeholder="10-digit mobile" value="98765 43210">
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:14px">
+      <label class="form-label">Description (Hindi / English)</label>
+      <textarea class="form-textarea" rows="3" placeholder="Describe your issue clearly…">दुकानदार ने 14 मार्च को चीनी का कोटा नहीं दिया, जबकि मेरा बायोमेट्रिक सत्यापन सफल हुआ था।</textarea>
+    </div>
+    <div class="form-footer">
+      <button class="btn-cancel">Cancel</button>
+      <button class="btn-submit" onclick="registerComplaint()">Submit Complaint →</button>
+    </div>
+  </div>
+
+  <div class="section-header"><div class="section-title">My Complaints</div><span class="section-link">View all</span></div>
+
+  <div class="griev-card">
+    <div class="griev-icon" style="background:var(--green-bg)">✅</div>
+    <div style="flex:1">
+      <div class="griev-id">GRV-2026-MP-008841</div>
+      <div class="griev-title">Rice quantity short by 5 kg — February collection</div>
+      <div class="griev-meta">FPS: RTM-0472 · Filed: 12 Feb 2026</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <span class="badge success">Resolved</span>
+      <div style="font-size:10px;color:var(--text3);margin-top:4px">Resolved in 31 hrs</div>
+    </div>
+  </div>
+
+  <div class="griev-card">
+    <div class="griev-icon" style="background:var(--yellow-bg)">🕐</div>
+    <div style="flex:1">
+      <div class="griev-id">GRV-2026-MP-009124</div>
+      <div class="griev-title">Sugar quota not dispensed despite successful biometric</div>
+      <div class="griev-meta">FPS: RTM-0472 · Filed: 16 Mar 2026</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <span class="badge warning">In Progress</span>
+      <div style="font-size:10px;color:var(--text3);margin-top:4px">28 hrs remaining</div>
+    </div>
+  </div>
+
+  <div class="griev-card">
+    <div class="griev-icon" style="background:#EBF3FD">📋</div>
+    <div style="flex:1">
+      <div class="griev-id">GRV-2026-MP-007503</div>
+      <div class="griev-title">FPS shop closed on allotted day without notice</div>
+      <div class="griev-meta">FPS: RTM-0391 · Filed: 18 Jan 2026</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <span class="badge success">Resolved</span>
+      <div style="font-size:10px;color:var(--text3);margin-top:4px">Resolved in 19 hrs</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="card-title">Tracking: GRV-2026-MP-009124</div>
+    <div class="timeline-item">
+      <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
+      <div><div class="tl-title">Complaint registered</div><div class="tl-time">16 Mar, 9:14 AM</div><div class="tl-desc">Your complaint has been logged and assigned ID GRV-2026-MP-009124</div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
+      <div><div class="tl-title">Assigned to District Officer</div><div class="tl-time">16 Mar, 10:02 AM</div><div class="tl-desc">Assigned to Ratlam District Food Officer — Sh. Devendra Sharma</div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--orange)"></div><div class="tl-line"></div></div>
+      <div><div class="tl-title">Under investigation</div><div class="tl-time">17 Mar, 2:30 PM</div><div class="tl-desc">FPS dealer records reviewed. Biometric logs confirm successful scan. Dealer contacted.</div></div>
+    </div>
+    <div class="timeline-item" style="margin-bottom:0">
+      <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--border)"></div></div>
+      <div><div class="tl-title" style="color:var(--text3)">Awaiting resolution</div><div class="tl-time">Expected by 18 Mar, 9:14 AM</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-bar">
+  <p>PDS Darpan · <span>SMART SAMADHAN 2K26</span> · Aatmanirbhar Tech Solutions for Madhya Pradesh · Helpline: <span>1967</span></p>
+</div>
+
+<script>
+// ── Screen Navigation ──
+function showScreen(id, btn) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  if(btn) btn.classList.add('active');
+}
+
+// ── Eligibility Check ──
+const eligibleCards = {
+  'MP-RTC-2024-4471892': {
+    name: 'Ramesh Kumar Patel',
+    id: 'MP-RTC-2024-4471892',
+    category: 'APL (Above Poverty Line)',
+    district: 'Ratlam, Madhya Pradesh',
+    members: 5,
+    fps: 'Ram Prasad Fair Price Shop (RTM-0472)',
+    aadhaar: 'XXXX XXXX 7892',
+    eligible: true,
+    quota: [
+      {item:'🌾 Wheat', qty:'25 kg', rate:'₹2/kg', avail:'Available', availClass:'success'},
+      {item:'🍚 Rice', qty:'20 kg', rate:'₹3/kg', avail:'Available', availClass:'success'},
+      {item:'🫙 Sugar', qty:'2 kg', rate:'₹13.50/kg', avail:'Out of Stock (Restock: 26 Mar)', availClass:'warning'},
+      {item:'🛢️ Kerosene', qty:'1 Litre', rate:'₹15/L', avail:'Low Stock — Collect Soon', availClass:'warning'},
+    ]
+  }
+};
+
+function checkEligibility() {
+  const input = document.getElementById('rationInput').value.trim().toUpperCase();
+  const resultDiv = document.getElementById('eligResult');
+
+  if (!input) {
+    resultDiv.innerHTML = '<div class="alert-banner warning"><span>⚠️</span><div style="font-size:13px;color:var(--yellow);font-weight:600">Please enter a Ration Card Number to check eligibility.</div></div>';
+    resultDiv.classList.add('show');
+    return;
+  }
+
+  const data = eligibleCards[input];
+
+  if (data && data.eligible) {
+    resultDiv.innerHTML = `
+      <div class="elig-card-success">
+        <div class="elig-header">
+          <div class="elig-status-icon ok">✅</div>
+          <div>
+            <div class="elig-name">${data.name}</div>
+            <div class="elig-id-mono">${data.id}</div>
+            <span class="badge success" style="margin-top:6px"><span class="badge-dot"></span>Eligible for PDS Benefits</span>
+          </div>
+        </div>
+        <div class="elig-detail-grid">
+          <div class="elig-detail-item"><div class="edi-label">Category</div><div class="edi-value">${data.category}</div></div>
+          <div class="elig-detail-item"><div class="edi-label">District</div><div class="edi-value">${data.district}</div></div>
+          <div class="elig-detail-item"><div class="edi-label">Family Members</div><div class="edi-value">${data.members} Members</div></div>
+          <div class="elig-detail-item"><div class="edi-label">FPS Shop</div><div class="edi-value">${data.fps}</div></div>
+          <div class="elig-detail-item"><div class="edi-label">Aadhaar Linked</div><div class="edi-value">${data.aadhaar}</div></div>
+          <div class="elig-detail-item"><div class="edi-label">Valid Until</div><div class="edi-value">December 2027</div></div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">📦 Monthly Quota & Current Availability</div>
+          <table class="elig-quota-table">
+            <tr><th>Item</th><th>Monthly Quota</th><th>Rate</th><th>Availability</th></tr>
+            ${data.quota.map(q => `<tr>
+              <td style="font-weight:600">${q.item}</td>
+              <td>${q.qty}</td>
+              <td style="font-family:'JetBrains Mono',monospace;font-size:12px">${q.rate}</td>
+              <td><span class="badge ${q.availClass}">${q.avail}</span></td>
+            </tr>`).join('')}
+          </table>
+        </div>
+        <div class="elig-avail-banner">
+          <span style="font-size:22px">✅</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--green)">Ration Partially Available This Month</div>
+            <div style="font-size:12px;color:var(--text2);margin-top:3px">Wheat and Rice are available. Visit your FPS shop with your Aadhaar card anytime. Sugar will be available after 26 March 2026.</div>
+          </div>
+        </div>
+      </div>`;
+  } else {
+    resultDiv.innerHTML = `
+      <div class="elig-card-fail">
+        <div class="elig-header">
+          <div class="elig-status-icon fail">❌</div>
+          <div>
+            <div class="elig-name">Ration Card Not Found</div>
+            <div class="elig-id-mono">${input}</div>
+            <span class="badge danger" style="margin-top:6px">Not Eligible / Not Found</span>
+          </div>
+        </div>
+        <div class="alert-banner danger" style="margin-bottom:16px">
+          <span>❌</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--red)">This ration card number was not found in our database.</div>
+            <div style="font-size:12px;color:var(--text2);margin-top:3px">Please check the number and try again. If the issue persists, contact your District Food Office or call <strong>1967</strong>.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn-submit" onclick="showScreen('helpline',document.querySelectorAll('.nav-btn')[7])">📞 Contact Helpline</button>
+          <button class="btn-cancel" onclick="document.getElementById('eligResult').classList.remove('show')">Try Again</button>
+        </div>
+      </div>`;
+  }
+
+  resultDiv.classList.add('show');
+  resultDiv.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+// Allow Enter key in search
+document.getElementById('rationInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') checkEligibility();
+});
+
+// ── Notifications Filter ──
+function filterNotifs(category, btn) {
+  document.querySelectorAll('.nf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#notifList .notif-full').forEach(n => {
+    if (category === 'all' || n.dataset.category === category) {
+      n.style.display = 'flex';
+    } else {
+      n.style.display = 'none';
+    }
+  });
+}
+
+function markAllRead() {
+  document.querySelectorAll('.notif-full.unread').forEach(n => n.classList.remove('unread'));
+  document.querySelectorAll('.unread-dot').forEach(d => d.remove());
+  document.querySelectorAll('.notif.unread').forEach(n => n.classList.remove('unread'));
+  const badge = document.getElementById('notif-bell-badge');
+  const navCount = document.getElementById('notif-count-nav');
+  if (badge) badge.style.display = 'none';
+  if (navCount) navCount.style.display = 'none';
+}
+
+// ── Complaint Registration ──
+let complaintCounter = 9200;
+function registerComplaint() {
+  complaintCounter++;
+  const newId = 'GRV-2026-MP-0' + complaintCounter;
+  document.getElementById('newComplaintId').textContent = newId;
+  document.getElementById('complaintPopup').classList.add('show');
+  // Add unread notification
+  const badge = document.getElementById('notif-bell-badge');
+  if (badge) { badge.style.display = 'flex'; badge.textContent = (parseInt(badge.textContent)||0)+1; }
+}
+
+function closeComplaintPopup() {
+  document.getElementById('complaintPopup').classList.remove('show');
+}
+
+// ── Complaint Tracker ──
+function trackComplaint() {
+  const val = document.getElementById('trackId').value.trim();
+  const res = document.getElementById('trackResult');
+  if (val) {
+    res.style.display = 'block';
+    res.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+}
+document.getElementById('trackId').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') trackComplaint();
+});
+</script>
+</body>
+</html>
